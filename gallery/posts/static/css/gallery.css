@@ -1,0 +1,38 @@
+body {
+    background-color: #ffff;
+}
+
+head {
+    background-color: #ffff;
+    border-bottom: 1px solid #9e9e9e;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    padding: 26px 20px;
+    flex-wrap: wrap;
+}
+
+.navigation a {
+    color: #111
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 30;
+}
+
+.logo a{
+    font-size: 25px;
+    padding: 10px;
+}
+
