@@ -1,0 +1,25 @@
+{% extends "posts/base.html" %}
+
+{% block content %}
+{% for post in posts %}
+    <div class="post">
+        <div class="post_header">
+            <div class="post_name">
+            {{post.author}}
+            </div>
+            <div class="post_caption">
+            {{post.caption}}
+            </div>
+            <div class="post_options">
+            <i class="fa-regular fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="image">
+            {% if post.image %}
+            <img src="{{post.image.url}}">
+            {% endif %}
+        </div>
+    </div>
+    
+{% endfor %}
+{% endblock %}
