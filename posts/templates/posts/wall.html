@@ -2,23 +2,41 @@
 
 {% block content %}
 {% for post in posts %}
-    <div class="post">
-        <div class="post_header">
-            <div class="post_name">
-            {{post.author}}
-            </div>
-            <div class="post_caption">
-            {{post.caption}}
-            </div>
-            <div class="post_options">
-            <i class="fa-regular fa-ellipsis"></i>
-            </div>
-        <div class="image">
-            {% if post.image %}
-            <img src="{{post.image.url}}">
-            {% endif %}
+<div class="container">
+        <!-- <div class="row"> -->
+        
+            <div class="card" style="width: 48rem;">
+                {% if post.image %}
+                <img src="{{post.image.url}}" class="card-img-top" alt="image">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{post.author}}</h5>
+                  <p class="card-text">{{post.caption}}</p>
+                  <a href="#" class="btn btn-primary"><i class="fa-solid fa-ellipsis"></i></a>
+                </div>
+              </div>
+
+            <!-- <div class="col-md-2">
+                <div class="h4">
+                {{post.author}}
+                </div>
+                <div class="post_caption">
+                {{post.caption}}
+                </div>
+                <div>
+                {{post.date_created}}
+                </div>
+                <div>
+                <i class="fa-solid fa-ellipsis"></i>
+                </div>
+                <div class="image">
+                {% if post.image %}
+                <img src="{{post.image.url}}">
+                {% endif %}
+                </div>
+            </div> -->
         </div>
-    </div>
+</div>
     
 {% endfor %}
 {% endblock %}
