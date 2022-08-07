@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.views.generic import ListView, CreateView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, CreateView, DetailView
 from django.utils import timezone
 from .models import Post
 from .forms import PostForm
@@ -20,3 +20,10 @@ class PostCreateView(CreateView):
         print(form.cleaned_data)
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class PostDetailView(DetailView):
+    template_name = "posts\post_detail.html"
+    queryset = Post.objects.all().filter(date_created__lte=timezone.now())
+    def get_object(self):
+        id_ = self.kwargs.get('id')
+        return get_object_or_404(Post, id=id_)
