@@ -9,3 +9,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.caption
+
+    class Meta:
+        ordering = ['-date_created'] # pakeičia įkeltų postų eiliškumą, kad paskutinis būtų atvaizduojamas pirmas
