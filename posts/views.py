@@ -6,14 +6,13 @@ from .forms import PostForm
 
 class PostListView(ListView):
     template_name = 'posts/wall.html'
-    queryset = Post.objects.all()
+    model = Post
     context_object_name = 'posts'
 
 class PostCreateView(CreateView):
     template_name = 'posts/new_post.html'
     form_class = PostForm
-    queryset = Post.objects.all()
-    # context_object_name = 'posts'
+    model = Post
     success_url = '/'
 
     def form_valid(self, form):
@@ -23,7 +22,7 @@ class PostCreateView(CreateView):
 
 class PostDetailView(DetailView):
     template_name = "posts\post_detail.html"
-    queryset = Post.objects.all().filter(date_created__lte=timezone.now())
+    model = Post
     def get_object(self):
         id_ = self.kwargs.get('id')
         return get_object_or_404(Post, id=id_)
