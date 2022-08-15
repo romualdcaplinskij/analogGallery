@@ -1,9 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils import timezone
 
+
 class Post(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    image = models.ImageField(blank=True, null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(blank=False, null=False)
     caption = models.TextField()
     date_created = models.DateTimeField(default=timezone.now)
 
