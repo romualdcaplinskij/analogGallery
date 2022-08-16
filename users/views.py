@@ -1,11 +1,10 @@
-from urllib.parse import urlencode
-from django.shortcuts import render
-from django.contrib import messages
 # from django.contrib.auth import authenticate, login, logout
-from django.views.generic import CreateView, ListView, View
-from users.forms import RegisterUser, LoginForm
+from django.views.generic import CreateView
+from users.forms import RegisterUser
 from  users.models import Profile
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 class NewUser(CreateView):
     template_name = "users/register.html"

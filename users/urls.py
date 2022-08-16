@@ -8,6 +8,6 @@ app_name = "users"
 
 urlpatterns = [
     path('register/', NewUser.as_view(), name="register"),
-    path('login/', LoginView.as_view(), name="login"),
+    path('login/', LoginView.as_view(redirect_authenticated_user=True), name="login"),
     path('password_reset/', PasswordResetView.as_view(), name="password_reset"),
 ]

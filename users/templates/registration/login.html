@@ -1,5 +1,7 @@
 {% extends "posts/base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
   {% if form.errors %}
@@ -18,19 +20,13 @@
     {% csrf_token %}
     <table>
       <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
+        <td>{{ form |crispy }}</td>
       </tr>
     </table>
     <input type="submit" value="login">
     <input type="hidden" name="next" value="{{ next }}">
   </form>
 
-  {# Assumes you setup the password_reset view in your URLconf #}
-  <p><a href="{% url 'users:password_reset' %}">Lost password?</a></p>
+  <p><a href="{% url 'users:password_reset' %}">Pamiršai slaptažodi?</a></p>
 
 {% endblock %}
