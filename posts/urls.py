@@ -1,6 +1,7 @@
 from django.urls import path, include
 from posts.views import PostListView, PostCreateView, PostDetailView, UserGallery
 
+
 app_name = "posts"
 
 urlpatterns = [

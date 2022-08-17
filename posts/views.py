@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, CreateView, DetailView
 from posts.models import Post
 from posts.forms import PostForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class PostListView(ListView):
@@ -10,7 +10,7 @@ class PostListView(ListView):
     model = Post
     context_object_name = "posts"
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     template_name = "posts/new_post.html"
     form_class = PostForm
     model = Post
@@ -22,7 +22,7 @@ class PostCreateView(CreateView):
         return super().form_valid(form)
     
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     template_name = "posts\post_detail.html"
     model = Post
     def get_object(self):
@@ -31,7 +31,7 @@ class PostDetailView(DetailView):
 
 
 
-class UserGallery(ListView):
+class UserGallery(LoginRequiredMixin, ListView):
     template_name = "posts/user_gallery.html"
     model = Post
     context_object_name = "gallery"
