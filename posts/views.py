@@ -32,6 +32,7 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 
 
 class UserGallery(LoginRequiredMixin, ListView):
+    login_url = 'users:login'
     template_name = "posts/user_gallery.html"
     model = Post
     context_object_name = "gallery"

@@ -6,7 +6,7 @@ app_name = "posts"
 
 urlpatterns = [
     path('', PostListView.as_view(), name='wall'),
-    path('new_post/', PostCreateView.as_view(), name='upload image'),
-    path('<int:id>', PostDetailView.as_view(), name='post detail'),
+    path('new_post/', PostCreateView.as_view(), name='upload_image'),
+    path('<int:id>', PostDetailView.as_view(), name='post_detail'),
     path('user_gallery/', UserGallery.as_view(), name='user_gallery'),
 ]
