@@ -1,3 +1,5 @@
+from email.mime import image
+from multiprocessing import context
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, CreateView, DetailView
 from posts.models import Post
@@ -36,4 +38,10 @@ class UserGallery(LoginRequiredMixin, ListView):
     template_name = "posts/user_gallery.html"
     model = Post
     context_object_name = "gallery"
+
+
+    def get_queryset(self):
+        return Post.objects.filter(author=self.request.user)
+
+
 

@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(blank=False, null=False)
+    image = models.ImageField(upload_to='author_images')
     caption = models.TextField()
     date_created = models.DateTimeField(default=timezone.now)
 
@@ -13,4 +13,5 @@ class Post(models.Model):
         return self.caption
 
     class Meta:
-        ordering = ['-date_created'] # pakeičia įkeltų postų eiliškumą, kad paskutinis būtų atvaizduojamas pirmas
+        # pakeičia įkeltų postų eiliškumą, kad paskutinis būtų atvaizduojamas pirmas
+        ordering = ['-date_created'] 
