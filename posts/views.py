@@ -1,7 +1,5 @@
-from email.mime import image
-from multiprocessing import context
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView
 from posts.models import Post
 from posts.forms import PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -25,12 +23,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     
 
 class PostDetailView(LoginRequiredMixin, DetailView):
+    login_url = 'users:login'
     template_name = "posts\post_detail.html"
     model = Post
-    def get_object(self):
-        id_ = self.kwargs.get('id')
-        return get_object_or_404(Post, id=id_)
-
 
 
 class UserGallery(LoginRequiredMixin, ListView):
@@ -44,4 +39,7 @@ class UserGallery(LoginRequiredMixin, ListView):
         return Post.objects.filter(author=self.request.user)
 
 
+class DeletePostView(DeleteView):
+    model = Post
+    template_name = "posts/delete_post.html"
 

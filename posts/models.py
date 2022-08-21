@@ -6,7 +6,7 @@ from django.utils import timezone
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='author_images')
-    caption = models.TextField()
+    caption = models.TextField(null=True, max_length="500" )
     date_created = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

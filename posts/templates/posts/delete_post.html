@@ -1,0 +1,12 @@
+{% extends "posts/base.html" %}
+{% block content %}   
+   
+   <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            <strong>{{user.username}} are you shure want to delete this post?</strong>
+            <br>
+            <button type="submit"><i class="fa-solid fa-trash-can"></i> Delete post</button>
+    </div>
+
+{% endblock %}
