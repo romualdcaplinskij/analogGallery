@@ -1,8 +1,9 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView, DeleteView
 from posts.models import Post
 from posts.forms import PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 class PostListView(ListView):
@@ -42,4 +43,9 @@ class UserGallery(LoginRequiredMixin, ListView):
 class DeletePostView(DeleteView):
     model = Post
     template_name = "posts/delete_post.html"
+    success_url = reverse_lazy('posts:user_gallery')
 
+
+class Editor(DetailView):
+    model = Post
+    template_name = "posts/editor.html"
