@@ -15,7 +15,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     template_name = "posts/new_post.html"
     form_class = PostForm
     model = Post
-    success_url = '/'
+    success_url = reverse_lazy('posts:user_gallery')
 
     def form_valid(self, form):
         print(form.cleaned_data)
